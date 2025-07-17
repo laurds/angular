@@ -1,0 +1,72 @@
+:host {
+  display: contents;
+  background-color: #f5f5fa;
+  min-height: 100vh;
+}
+
+mat-toolbar {
+  box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+mat-card-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+mat-card-subtitle {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.add-task-form {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.task-checkbox span.completed {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.admin-only-banner {
+  background-color: #e8eaf6;
+  color: #3f51b5;
+  border: 1px solid #c5cae9;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.empty-list-message {
+  text-align: center;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .add-task-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

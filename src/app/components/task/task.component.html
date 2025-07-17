@@ -1,0 +1,50 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title appHighlight>Adicionar Nova Tarefa</mat-card-title>
+    <mat-card-subtitle>Preencha o campo e pressione Enter ou clique no botão.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="add-task-form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Título da tarefa</mat-label>
+        <input matInput #newTaskInput type="text" (keyup.enter)="onAddTask(newTaskInput.value, newTaskInput)" appAutoFocus>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="onAddTask(newTaskInput.value, newTaskInput)">
+        Adicionar Tarefa
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>Minhas Tarefas</mat-card-title>
+    <mat-card-subtitle>Marque as tarefas concluídas e gerencie sua lista.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let task of tasks">
+        <div class="task-item">
+          <mat-checkbox [checked]="task.completed" (change)="onToggleComplete(task)" class="task-checkbox">
+            <span [class.completed]="task.completed">{{ task.title }}</span>
+          </mat-checkbox>
+
+          <button *appRoleOnly="'admin'" mat-icon-button color="warn" (click)="onDelete(task)" aria-label="Deletar tarefa">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+    <p *ngIf="tasks.length === 0" class="empty-list-message">
+      Nenhuma tarefa encontrada. Adicione uma!
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+     <button mat-stroked-button color="accent"
+             [appDebounceClick]="500"
+             (debounceClick)="onDebounceClick()">
+       Clique com Debounce
+     </button>
+  </mat-card-actions>
+</mat-card>
