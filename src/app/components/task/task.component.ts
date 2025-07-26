@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Imports do Angular Material
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,9 +21,17 @@ import { Task } from '../../models/task';
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule,
-    MatListModule, MatCheckboxModule, MatIconModule, HighlightDirective,
-    AutoFocusDirective, DebounceClickDirective, RoleOnlyDirective
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatIconModule,
+    HighlightDirective,
+    AutoFocusDirective,
+    DebounceClickDirective,
+    RoleOnlyDirective
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'

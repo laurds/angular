@@ -6,11 +6,17 @@ export type UserRole = 'admin' | 'guest';
   providedIn: 'root'
 })
 export class AuthService {
-  // Simula o papel do usuário logado.
-  currentUserRole = signal<UserRole>('guest');
+  // 1. Tenta pegar o valor salvo no localStorage. Se não existir, usa 'guest'.
+  private initialRole = (localStorage.getItem('userRole') as UserRole) || 'guest';
 
-  // Métodos para simular a troca de papel
+  // 2. Inicia o signal com o valor recuperado.
+  currentUserRole = signal<UserRole>(this.initialRole);
+
   loginAs(role: UserRole) {
+    // 3. Salva o novo valor no localStorage.
+    localStorage.setItem('userRole', role);
+
+    // 4. Atualiza o signal para que o resto da aplicação reaja à mudança.
     this.currentUserRole.set(role);
   }
 }

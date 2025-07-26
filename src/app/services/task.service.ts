@@ -6,8 +6,8 @@ import { Task } from '../models/task';
 })
 export class TaskService {
   private tasks = signal<Task[]>([
-    { id: 1, title: 'Estudar @Input e @Output', completed: true },
-    { id: 2, title: 'Criar diretiva de Highlight', completed: false }
+    { id: 1, title: 'Estudar @Input e @Output', description:'teste desc', completed: true },
+    { id: 2, title: 'Criar diretiva de Highlight', description:'teste', completed: false }
   ]);
 
   private nextId = 4;
@@ -16,8 +16,13 @@ export class TaskService {
     return this.tasks.asReadonly();
   }
 
-  addTask(title: string) {
-    const newTask: Task = { id: this.nextId++, title, completed: false };
+  addTask(title: string, description: string) {
+    const newTask: Task = {
+      id: this.nextId++,
+      title,
+      description,
+      completed: false
+    };
     this.tasks.update(currentTasks => [...currentTasks, newTask]);
   }
 

@@ -1,0 +1,26 @@
+// Adicione a regra de layout aqui
+.task-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+// Estilos específicos para os itens desta página
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.task-checkbox span.completed {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.empty-list-message {
+  text-align: center;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}

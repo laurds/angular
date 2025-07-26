@@ -1,0 +1,30 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title appHighlight>Adicionar Nova Tarefa</mat-card-title>
+      <mat-card-subtitle>Preencha os campos abaixo para criar uma nova tarefa.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="form-content">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Título da tarefa</mat-label>
+        <input matInput formControlName="title" appAutoFocus>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+          O título é obrigatório.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Descrição (opcional)</mat-label>
+        <textarea matInput formControlName="description" cdkTextareaAutosize cdkAutosizeMinRows="3"></textarea>
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions class="form-actions" align="end">
+      <button mat-stroked-button type="button" routerLink="/">Cancelar</button>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">
+        Adicionar Tarefa
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

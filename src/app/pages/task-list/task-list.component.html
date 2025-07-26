@@ -1,0 +1,32 @@
+<div class="task-list-container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Minhas Tarefas</mat-card-title>
+      <mat-card-subtitle>Marque as tarefas concluídas e gerencie sua lista.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let task of tasks()">
+          <div class="task-item">
+            <mat-checkbox [checked]="task.completed" (change)="handleToggleComplete(task)" class="task-checkbox">
+              <span [class.completed]="task.completed">{{ task.title }} - <i>{{ task.description }}</i></span>
+            </mat-checkbox>
+
+            <button *appRoleOnly="'admin'" mat-icon-button color="warn" (click)="handleDeleteTask(task)" aria-label="Deletar tarefa">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <p *ngIf="tasks().length === 0" class="empty-list-message">
+        Nenhuma tarefa encontrada. Adicione uma!
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button *appRoleOnly="'admin'" mat-raised-button color="primary" routerLink="/add">
+        <mat-icon>add</mat-icon>
+        Adicionar Nova Tarefa
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

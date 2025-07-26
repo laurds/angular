@@ -1,9 +1,49 @@
-// Container principal para o conteúdo
+// Estilos para o novo cabeçalho de controle de acesso
+.access-control-header {
+  background-color: #ffffff;
+  padding: 12px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+}
+
+.access-control-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.role-select {
+  width: 180px;
+  font-size: 10px;
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}
+
+
+.admin-only-banner {
+  margin-top: 0;
+}
+
+
+// O container principal agora só cuida do espaçamento e largura máxima
 .content {
   padding: 24px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
+
+// Container principal para o conteúdo
+// .content {
+//   padding: 24px;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+//   gap: 24px;
+//   max-width: 1200px;
+//   margin: 0 auto;
+// }

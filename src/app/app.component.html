@@ -2,12 +2,27 @@
   <span>Painel de Tarefas - Piloto Angular</span>
 </mat-toolbar>
 
-<main class="content">
+<header class="access-control-header">
+  <div class="access-control-container">
+    <mat-form-field subscriptSizing="dynamic" appearance="outline" class="role-select">
+      <mat-label>Permissão Atual</mat-label>
+      <mat-select [value]="currentUserRole()" (valueChange)="onRoleChange($event)">
+        <mat-option value="admin">Administrador</mat-option>
+        <mat-option value="guest">Visitante</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-card class="card">
+    <div *appRoleOnly="'admin'" class="admin-only-banner">
+      <mat-icon>verified_user</mat-icon>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+  <!-- <mat-card class="card">
     <mat-card-header>
       <mat-card-title>Controle de Acesso</mat-card-title>
-      <mat-card-subtitle>Altere a permissão para testar a diretiva estrutural.</mat-card-subtitle>
+      <mat-card-subtitle>Altere a permissão para testar a diretiva.</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field appearance="fill" class="full-width">
@@ -23,14 +38,6 @@
         <span>Painel de Administrador visível!</span>
       </div>
     </mat-card-content>
-  </mat-card>
-
-  <app-task
-    [tasks]="tasks()"
-    (addTaskRequest)="handleAddTask($event)"
-    (toggleTaskRequest)="handleToggleComplete($event)"
-    (deleteTaskRequest)="handleDeleteTask($event)"
-    (debounceAlertRequest)="alertaDebounce()">
-  </app-task>
-
+  </mat-card> -->
+  <router-outlet></router-outlet>
 </main>

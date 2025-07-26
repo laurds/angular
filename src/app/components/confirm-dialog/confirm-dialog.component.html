@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>
+  <mat-icon color="warn">warning</mat-icon>
+  Confirmar Exclusão
+</h2>
+
+<mat-dialog-content>
+  <p>Você tem certeza que deseja excluir a tarefa?</p>
+  <p class="task-title">"{{ data.taskTitle }}"</p>
+  <p class="warning-text">Esta ação não pode ser desfeita.</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="warn" (click)="onConfirm()">Confirmar Exclusão</button>
+</mat-dialog-actions>
